@@ -1,0 +1,14 @@
+version: '2'
+services:
+    otus_spring_example-app:
+        image: otus_spring_example
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://otus_spring_example-postgresql:5432/otus_spring_example
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    otus_spring_example-postgresql:
+        extends:
+            file: postgresql.yml
+            service: otus_spring_example-postgresql
